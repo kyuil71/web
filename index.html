@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Archive - Visual Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>DESIGN ARCHIVE</h1>
+        <p>Curation of Visual Concepts & Materials</p>
+    </header>
+
+    <main id="gallery-container">
+        <div class="grid-container" id="main-grid">
+            <div class="card" onclick="openDetail(0)">
+                <div class="img-wrapper"><img src="image/p-1.jpg" alt="Minimalist Interior"></div>
+                <div class="info">
+                    <h3>Minimalist Calm</h3>
+                    <p>Modern Living Space</p>
+                </div>
+            </div>
+            <div class="card" onclick="openDetail(1)">
+                <div class="img-wrapper"><img src="image/p-2.jpg" alt="Abstract Textures"></div>
+                <div class="info">
+                    <h3>Material Study</h3>
+                    <p>Abstract Surface & Texture</p>
+                </div>
+            </div>
+            <div class="card" onclick="openDetail(2)">
+                <div class="img-wrapper"><img src="image/p-3.jpg" alt="Urban Architecture"></div>
+                <div class="info">
+                    <h3>Urban Geometry</h3>
+                    <p>Architectural Perspectives</p>
+                </div>
+            </div>
+            <div class="card" onclick="openDetail(3)">
+                <div class="img-wrapper"><img src="image/p-4.jpg" alt="Product CMF"></div>
+                <div class="info">
+                    <h3>CMF Exploration</h3>
+                    <p>Color, Material, Finish</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="detail-view" class="hidden">
+            <button class="back-btn" onclick="closeDetail()">← Back to Gallery</button>
+            <div class="detail-content">
+                <img id="detail-img" src="" alt="Detail View">
+                <div class="detail-text">
+                    <h2 id="detail-title"></h2>
+                    <p id="detail-desc"></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Design Strategy Lab. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const data = [
+            { title: "Minimalist Calm", desc: "차분하고 정돈된 톤앤매너를 보여주는 미니멀리스트 인테리어 컨셉입니다. 빛과 그림자의 대비를 통해 공간의 깊이감을 강조했습니다.", src: "image/p-1.jpg" },
+            { title: "Material Study", desc: "추상적인 질감과 패턴을 탐구한 작업입니다. CMF 디자인 기획 시 시각적 영감을 제공하는 텍스처 요소들을 분석했습니다.", src: "image/p-2.jpg" },
+            { title: "Urban Geometry", desc: "현대 건축물의 구조적 미학을 담았습니다. 직선과 곡선의 조화, 그리고 차가운 메탈 소재의 감성을 시각화했습니다.", src: "image/p-3.jpg" },
+            { title: "CMF Exploration", desc: "제품 디자인의 핵심인 컬러와 마감 처리에 집중한 이미지입니다. 세련된 톤의 변화와 재질의 촉감을 연구하는 과정입니다.", src: "image/p-4.jpg" }
+        ];
+
+        function openDetail(index) {
+            document.getElementById('main-grid').classList.add('hidden');
+            document.getElementById('detail-view').classList.remove('hidden');
+            document.getElementById('detail-img').src = data[index].src;
+            document.getElementById('detail-title').innerText = data[index].title;
+            document.getElementById('detail-desc').innerText = data[index].desc;
+            window.scrollTo(0, 0);
+        }
+
+        function closeDetail() {
+            document.getElementById('main-grid').classList.remove('hidden');
+            document.getElementById('detail-view').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
