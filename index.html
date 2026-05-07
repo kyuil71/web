@@ -3,83 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Design Archive - Visual Portfolio</title>
+    <title>Design Insight Archive</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>DESIGN ARCHIVE</h1>
-        <p>Curation of Visual Concepts & Materials</p>
+        <h1>VISUAL ARCHIVE</h1>
+        <p>Design Strategy & UX Research Insight</p>
     </header>
 
-    <main id="gallery-container">
-        <div class="grid-container" id="main-grid">
-            <div class="card" onclick="openDetail(0)">
-                <div class="img-wrapper"><img src="image/p-1.jpg" alt="Minimalist Interior"></div>
-                <div class="info">
-                    <h3>Minimalist Calm</h3>
-                    <p>Modern Living Space</p>
+    <main id="app-container">
+        <div class="grid-layout" id="main-grid">
+            <div class="item-card" onclick="showDetail(0)">
+                <div class="thumb-container"><img src="p-1.jpg" alt="Concept 1"></div>
+                <div class="item-info">
+                    <h3>Spatial Harmony</h3>
+                    <span>Interior & Lighting Study</span>
                 </div>
             </div>
-            <div class="card" onclick="openDetail(1)">
-                <div class="img-wrapper"><img src="image/p-2.jpg" alt="Abstract Textures"></div>
-                <div class="info">
-                    <h3>Material Study</h3>
-                    <p>Abstract Surface & Texture</p>
+            <div class="item-card" onclick="showDetail(1)">
+                <div class="thumb-container"><img src="p-2.jpg" alt="Concept 2"></div>
+                <div class="item-info">
+                    <h3>Tactile Texture</h3>
+                    <span>CMF Material Surface</span>
                 </div>
             </div>
-            <div class="card" onclick="openDetail(2)">
-                <div class="img-wrapper"><img src="image/p-3.jpg" alt="Urban Architecture"></div>
-                <div class="info">
-                    <h3>Urban Geometry</h3>
-                    <p>Architectural Perspectives</p>
+            <div class="item-card" onclick="showDetail(2)">
+                <div class="thumb-container"><img src="p-3.jpg" alt="Concept 3"></div>
+                <div class="item-info">
+                    <h3>Structural Form</h3>
+                    <span>Architectural Geometry</span>
                 </div>
             </div>
-            <div class="card" onclick="openDetail(3)">
-                <div class="img-wrapper"><img src="image/p-4.jpg" alt="Product CMF"></div>
-                <div class="info">
-                    <h3>CMF Exploration</h3>
-                    <p>Color, Material, Finish</p>
+            <div class="item-card" onclick="showDetail(3)">
+                <div class="thumb-container"><img src="p-4.jpg" alt="Concept 4"></div>
+                <div class="item-info">
+                    <h3>Refined Finish</h3>
+                    <span>Product Detail & CMF</span>
                 </div>
             </div>
         </div>
 
-        <div id="detail-view" class="hidden">
-            <button class="back-btn" onclick="closeDetail()">← Back to Gallery</button>
-            <div class="detail-content">
-                <img id="detail-img" src="" alt="Detail View">
-                <div class="detail-text">
+        <div id="detail-section" class="hidden">
+            <div class="navigation">
+                <button class="btn-home" onclick="hideDetail()">← Back to Overview</button>
+            </div>
+            <div class="detail-wrapper">
+                <div class="image-box">
+                    <img id="detail-main-img" src="" alt="View Image">
+                </div>
+                <div class="content-box">
                     <h2 id="detail-title"></h2>
-                    <p id="detail-desc"></p>
+                    <hr>
+                    <p id="detail-description"></p>
                 </div>
             </div>
         </div>
     </main>
 
     <footer>
-        <p>&copy; 2026 Design Strategy Lab. All rights reserved.</p>
+        <p>Created for Design Strategy Research &copy; 2026</p>
     </footer>
 
     <script>
-        const data = [
-            { title: "Minimalist Calm", desc: "차분하고 정돈된 톤앤매너를 보여주는 미니멀리스트 인테리어 컨셉입니다. 빛과 그림자의 대비를 통해 공간의 깊이감을 강조했습니다.", src: "image/p-1.jpg" },
-            { title: "Material Study", desc: "추상적인 질감과 패턴을 탐구한 작업입니다. CMF 디자인 기획 시 시각적 영감을 제공하는 텍스처 요소들을 분석했습니다.", src: "image/p-2.jpg" },
-            { title: "Urban Geometry", desc: "현대 건축물의 구조적 미학을 담았습니다. 직선과 곡선의 조화, 그리고 차가운 메탈 소재의 감성을 시각화했습니다.", src: "image/p-3.jpg" },
-            { title: "CMF Exploration", desc: "제품 디자인의 핵심인 컬러와 마감 처리에 집중한 이미지입니다. 세련된 톤의 변화와 재질의 촉감을 연구하는 과정입니다.", src: "image/p-4.jpg" }
+        // 이미지 특성에 맞춘 데이터 구성
+        const galleryData = [
+            { 
+                title: "Spatial Harmony", 
+                desc: "공간의 여백과 조명이 만들어내는 조화를 탐구합니다. 사용자 경험(UX) 측면에서 심리적 안정감을 주는 인테리어 요소들을 분석한 결과물입니다.", 
+                path: "p-1.jpg" 
+            },
+            { 
+                title: "Tactile Texture", 
+                desc: "소재가 가진 고유의 질감과 촉감을 시각화했습니다. CMF 전략 수립 시 제품의 프리미엄 이미지를 결정짓는 핵심 텍스처 데이터입니다.", 
+                path: "p-2.jpg" 
+            },
+            { 
+                title: "Structural Form", 
+                desc: "현대 건축물의 기하학적 구조에서 영감을 얻은 디자인 큐레이션입니다. 직선과 곡선이 만나는 지점의 구조적 미학을 담고 있습니다.", 
+                path: "p-3.jpg" 
+            },
+            { 
+                title: "Refined Finish", 
+                desc: "정교한 마감 처리를 통해 구현된 제품 디자인의 디테일입니다. 색상과 광택의 미세한 차이가 브랜드 가치에 미치는 영향을 고찰했습니다.", 
+                path: "p-4.jpg" 
+            }
         ];
 
-        function openDetail(index) {
+        function showDetail(idx) {
+            const data = galleryData[idx];
             document.getElementById('main-grid').classList.add('hidden');
-            document.getElementById('detail-view').classList.remove('hidden');
-            document.getElementById('detail-img').src = data[index].src;
-            document.getElementById('detail-title').innerText = data[index].title;
-            document.getElementById('detail-desc').innerText = data[index].desc;
+            document.getElementById('detail-section').classList.remove('hidden');
+            
+            document.getElementById('detail-main-img').src = data.path;
+            document.getElementById('detail-title').innerText = data.title;
+            document.getElementById('detail-description').innerText = data.desc;
             window.scrollTo(0, 0);
         }
 
-        function closeDetail() {
+        function hideDetail() {
             document.getElementById('main-grid').classList.remove('hidden');
-            document.getElementById('detail-view').classList.add('hidden');
+            document.getElementById('detail-section').classList.add('hidden');
         }
     </script>
 </body>
